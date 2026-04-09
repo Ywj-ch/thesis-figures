@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>识别与求解数据流图</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Microsoft YaHei", "SimSun", serif;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        svg {
+            display: block;
+        }
+        
+        .export-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 30px;
+            background: #4DB6AC;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .export-btn:hover {
+            background: #3D9B8F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg id="dataFlow" width="900" height="850" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                </marker>
+                <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                </marker>
+            </defs>
+            
+            <!-- 标题 -->
+            <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">识别与求解数据流图</text>
+            
+            <!-- 参与者矩形 -->
+            <rect x="50" y="50" width="100" height="40" rx="5" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+            <text x="100" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">User</text>
+            
+            <rect x="200" y="50" width="120" height="40" rx="5" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+            <text x="260" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Frontend</text>
+            
+            <rect x="370" y="50" width="120" height="40" rx="5" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+            <text x="430" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Scanner</text>
+            
+            <rect x="540" y="50" width="120" height="40" rx="5" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+            <text x="600" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Backend</text>
+            
+            <rect x="710" y="50" width="130" height="40" rx="5" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+            <text x="775" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">YOLOv8 + Solver</text>
+            
+            <!-- 生命线 -->
+            <line x1="100" y1="90" x2="100" y2="800" stroke="#999" stroke-width="1"/>
+            <line x1="260" y1="90" x2="260" y2="800" stroke="#999" stroke-width="1"/>
+            <line x1="430" y1="90" x2="430" y2="800" stroke="#999" stroke-width="1"/>
+            <line x1="600" y1="90" x2="600" y2="800" stroke="#999" stroke-width="1"/>
+            <line x1="775" y1="90" x2="775" y2="800" stroke="#999" stroke-width="1"/>
+            
+            <!-- 阶段1：视觉识别 -->
+            <rect x="520" y="110" width="160" height="25" rx="3" fill="#FFF8E1" stroke="#F9A825" stroke-width="1"/>
+            <text x="600" y="127" text-anchor="middle" font-size="13" font-weight="bold" fill="#F57F17">阶段1：视觉识别</text>
+            
+            <!-- 步骤1：点击扫描 -->
+            <line x1="100" y1="150" x2="260" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="180" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">1. 点击"扫描识别"</text>
+            
+            <!-- 步骤2：激活摄像头 -->
+            <line x1="260" y1="180" x2="430" y2="180" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="345" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">2. 激活摄像头(WebRTC)</text>
+            
+            <!-- 步骤3：拍摄6个面 -->
+            <line x1="100" y1="210" x2="430" y2="210" stroke="#333" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead-dashed)"/>
+            <text x="265" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">3. 拍摄6个面[循环]</text>
+            
+            <!-- 步骤4：Base64编码 -->
+            <line x1="430" y1="240" x2="430" y2="270" stroke="#333" stroke-width="1.5"/>
+            <text x="470" y="255" text-anchor="start" font-size="11" font-weight="bold" fill="#333">4. 截取&Base64编码</text>
+            
+            <!-- 步骤5：发送到后端 -->
+            <line x1="430" y1="290" x2="600" y2="290" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="515" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">5. POST /api/recognize</text>
+            
+            <!-- 步骤6：YOLO推理 -->
+            <line x1="600" y1="320" x2="775" y2="320" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="687" y="315" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">6. YOLO模型推理</text>
+            
+            <!-- 步骤7：返回识别结果 -->
+            <line x1="775" y1="350" x2="600" y2="350" stroke="#333" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead-dashed)"/>
+            <text x="687" y="345" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">7. 返回6面×9色矩阵</text>
+            
+            <!-- 步骤8：返回前端 -->
+            <line x1="600" y1="380" x2="260" y2="380" stroke="#333" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead-dashed)"/>
+            <text x="430" y="375" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">8. 返回JSON状态数据</text>
+            
+            <!-- 步骤9：渲染2D视图 -->
+            <line x1="260" y1="410" x2="260" y2="440" stroke="#333" stroke-width="1.5"/>
+            <text x="290" y="425" text-anchor="start" font-size="11" font-weight="bold" fill="#333">9. 渲染Face2DView</text>
+            
+            <!-- 阶段2：算法求解 -->
+            <rect x="520" y="470" width="160" height="25" rx="3" fill="#E8F5E9" stroke="#43A047" stroke-width="1"/>
+            <text x="600" y="487" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">阶段2：算法求解</text>
+            
+            <!-- 步骤10：点击求解 -->
+            <line x1="100" y1="510" x2="260" y2="510" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="180" y="505" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">10. 点击"智能求解"</text>
+            
+            <!-- 步骤11：发送求解请求 -->
+            <line x1="260" y1="540" x2="600" y2="540" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="430" y="535" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">11. POST /api/solve</text>
+            
+            <!-- 步骤12：状态转换 -->
+            <line x1="600" y1="570" x2="775" y2="570" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="687" y="565" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">12. 状态转换→Kociemba</text>
+            
+            <!-- 步骤13：求解计算 -->
+            <line x1="775" y1="600" x2="775" y2="630" stroke="#333" stroke-width="1.5"/>
+            <text x="805" y="615" text-anchor="start" font-size="11" font-weight="bold" fill="#333">13. 计算最优解</text>
+            
+            <!-- 步骤14：返回解法 -->
+            <line x1="775" y1="660" x2="600" y2="660" stroke="#333" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead-dashed)"/>
+            <text x="687" y="655" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">14. 返回解法字符串</text>
+            
+            <!-- 步骤15：返回前端 -->
+            <line x1="600" y1="690" x2="260" y2="690" stroke="#333" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead-dashed)"/>
+            <text x="430" y="685" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">15. 返回步骤&3D动作序列</text>
+            
+            <!-- 步骤16：3D动画演示 -->
+            <line x1="260" y1="720" x2="260" y2="780" stroke="#333" stroke-width="1.5"/>
+            <text x="290" y="735" text-anchor="start" font-size="11" font-weight="bold" fill="#333">16. Cube3DView执行动画</text>
+            <text x="290" y="755" text-anchor="start" font-size="11" font-weight="bold" fill="#333">17. 更新步骤指示器</text>
+            
+            <!-- 底部参与者 -->
+            <rect x="50" y="800" width="100" height="40" rx="5" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+            <text x="100" y="825" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">User</text>
+            
+            <rect x="200" y="800" width="120" height="40" rx="5" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+            <text x="260" y="825" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Frontend</text>
+            
+            <rect x="370" y="800" width="120" height="40" rx="5" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+            <text x="430" y="825" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Scanner</text>
+            
+            <rect x="540" y="800" width="120" height="40" rx="5" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+            <text x="600" y="825" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Backend</text>
+            
+            <rect x="710" y="800" width="130" height="40" rx="5" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+            <text x="775" y="825" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">YOLOv8 + Solver</text>
+            
+        </svg>
+        
+        <button class="export-btn" onclick="exportImage()">导出PNG图片</button>
+    </div>
+    
+    <script>
+        function exportImage() {
+            const svg = document.getElementById('dataFlow');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = 900 * 2;
+            canvas.height = 850 * 2;
+            ctx.scale(2, 2);
+            
+            img.onload = function() {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0);
+                
+                const link = document.createElement('a');
+                link.download = '识别与求解数据流图.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+    </script>
+</body>
+</html>
