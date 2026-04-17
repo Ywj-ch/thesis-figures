@@ -1,0 +1,109 @@
+<!--
+  PPT致谢页 - 与封面页呼应
+  居中大标题 + 底部深蓝信息条，白色背景
+  使用方式：浏览器打开后截图，插入到PPT中
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致谢页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 1280px; height: 720px; overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+        .slide {
+            width: 1280px; height: 720px; position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        .logo-area {
+            position: absolute; top: 28px; right: 50px; text-align: center;
+        }
+        .logo-img { width: 70px; height: auto; }
+        .school-name { display: none; }
+
+        .main-content {
+            flex: 1;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 0 100px; margin-top: -20px;
+        }
+
+        .thanks-title {
+            font-size: 52px; font-weight: 700; color: #111827;
+            letter-spacing: 6px; line-height: 1.5; text-align: center;
+        }
+
+        .thanks-sub {
+            font-size: 16px; color: #6b7280; margin-top: 20px;
+            letter-spacing: 1px; text-align: center;
+        }
+
+        .divider {
+            width: 200px; height: 3px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+            margin-top: 32px; border-radius: 2px;
+        }
+
+        .bottom-bar {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+            padding: 60px 80px 42px 80px;
+            display: flex; justify-content: center; align-items: center;
+            gap: 36px; flex-shrink: 0;
+        }
+
+        .bottom-item { display: flex; align-items: baseline; gap: 8px; }
+        .bottom-label { font-size: 20px; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+        .bottom-value { font-size: 20px; color: #ffffff; font-weight: 500; letter-spacing: 0.5px; }
+        .bottom-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.25); }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="logo-area">
+            <img class="logo-img" src="logo.svg" alt="湖南师范大学">
+            <div class="school-name">湖南师范大学</div>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="thanks-title">恳请各位老师</div>
+            <div class="thanks-title">批评指正</div>
+            <div class="thanks-sub">Thank You for Your Guidance</div>
+            <div class="divider"></div>
+        </div>
+
+        <div class="bottom-bar">
+            <div class="bottom-item">
+                <span class="bottom-label">答辩人</span>
+                <span class="bottom-value">余闻杰</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-label">学号</span>
+                <span class="bottom-value">202230226021</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-label">指导老师</span>
+                <span class="bottom-value">蒋少华</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-label">专业</span>
+                <span class="bottom-value">物联网工程</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-value">2026年4月29日</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

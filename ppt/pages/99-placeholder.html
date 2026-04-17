@@ -1,0 +1,68 @@
+<!--
+  PPT内容占位页 - 用于各章节内容页的模板占位
+  风格：居中提示 + 蓝色装饰，与整体风格统一
+  使用方式：浏览器打开后截图，插入到PPT中
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容占位</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 1280px; height: 720px; overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+        .slide {
+            width: 1280px; height: 720px; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .placeholder-icon {
+            width: 80px; height: 80px; margin-bottom: 30px;
+            border: 3px solid #d1d5db; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .placeholder-icon::before {
+            content: '';
+            width: 32px; height: 32px;
+            border: 3px solid #93c5fd; border-radius: 4px;
+            position: absolute;
+        }
+        .placeholder-icon::after {
+            content: '';
+            width: 14px; height: 14px;
+            border: 2.5px solid #93c5fd; border-radius: 50%;
+            position: absolute; top: 16px; right: 14px;
+        }
+        .placeholder-text {
+            font-size: 24px; color: #9ca3af; letter-spacing: 4px; font-weight: 400;
+        }
+        .placeholder-sub {
+            font-size: 14px; color: #d1d5db; margin-top: 12px; letter-spacing: 1px;
+        }
+        .deco-circle1 {
+            position: absolute; right: -80px; bottom: -80px;
+            width: 240px; height: 240px; border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(96,165,250,0.02));
+        }
+        .deco-circle2 {
+            position: absolute; left: 50px; top: 30px;
+            width: 120px; height: 120px; border-radius: 50%;
+            border: 1.5px solid rgba(59,130,246,0.08);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="deco-circle1"></div>
+        <div class="deco-circle2"></div>
+        <div class="placeholder-icon"></div>
+        <div class="placeholder-text">内容待填充</div>
+        <div class="placeholder-sub">CONTENT PLACEHOLDER</div>
+    </div>
+</body>
+</html>

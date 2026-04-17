@@ -1,0 +1,190 @@
+<!--
+  PPT封面页（首页）- 方案A改进：减少留白，增大底部信息区
+  风格：居中大标题 + 深蓝底部信息区，白色背景，黑色字体
+  注意：文字一律黑色，不使用灰色文字
+  使用方式：浏览器打开后截图，插入到PPT中
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封面页 - 基于YOLO与Three.js的智能魔方还原系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        
+
+        .logo-area {
+            position: absolute;
+            top: 24px;
+            right: 50px;
+            text-align: center;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: auto;
+        }
+
+        .school-name {
+            display: none;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 100px;
+            margin-top: -40px;
+        }
+
+        .thesis-badge {
+            font-size: 18px;
+            color: #111827;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            padding: 6px 28px;
+            border: 1.5px solid #2563eb;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .title-main {
+            font-size: 52px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 4px;
+            line-height: 1.55;
+            text-align: center;
+        }
+
+        .title-sub {
+            font-size: 18px;
+            color: #374151;
+            margin-top: 16px;
+            letter-spacing: 0.3px;
+            font-weight: 300;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .divider {
+            width: 600px;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+            margin-top: 32px;
+            border-radius: 2px;
+        }
+
+        .bottom-bar {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+            padding: 60px 80px 42px 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+            flex-shrink: 0;
+        }
+
+        .bottom-item {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .bottom-label {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .bottom-value {
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .bottom-sep {
+            width: 1px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* 左上装饰 */
+        /* 右侧竖线装饰 - 已移除 */
+
+        
+    </style>
+</head>
+<body>
+    <div class="slide">
+        
+
+        <div class="logo-area">
+            <img class="logo-img" src="logo.svg" alt="湖南师范大学">
+            <div class="school-name">湖南师范大学</div>
+        </div>
+
+        <div class="main-content">
+            <div class="thesis-badge">本科毕业设计答辩</div>
+            <div class="title-main">基于YOLO与Three.js的</div>
+            <div class="title-main">智能魔方还原系统</div>
+            <div class="title-sub">Intelligent Rubik's Cube Solving System Based on YOLO and Three.js</div>
+            <div class="divider"></div>
+        </div>
+
+        <div class="bottom-bar">
+            <div class="bottom-item">
+                <span class="bottom-label">答辩人</span>
+                <span class="bottom-value">余闻杰</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-label">学号</span>
+                <span class="bottom-value">202230226021</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-label">指导老师</span>
+                <span class="bottom-value">蒋少华</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-label">专业</span>
+                <span class="bottom-value">物联网工程</span>
+            </div>
+            <div class="bottom-sep"></div>
+            <div class="bottom-item">
+                <span class="bottom-value">2026年4月29日</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

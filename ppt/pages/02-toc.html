@@ -1,0 +1,186 @@
+<!--
+  PPT目录页 - 现代风格
+  左侧深蓝弧形面板 + 右侧简洁列表
+  使用方式：浏览器打开后截图，插入到PPT中
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目录页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        
+
+        .left-panel {
+            width: 360px;
+            height: 100%;
+            background: linear-gradient(160deg, #1e3a5f 0%, #1e40af 60%, #2563eb 100%);
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -65px;
+            width: 130px;
+            height: 800px;
+            background: #ffffff;
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        .left-title-zh {
+            font-size: 52px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 16px;
+            margin-bottom: 12px;
+        }
+
+        .left-title-en {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 10px;
+            font-weight: 300;
+        }
+
+        .left-deco {
+            width: 40px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.35);
+            margin-top: 24px;
+            border-radius: 2px;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 55px 90px 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .toc-row {
+            display: flex;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .toc-row:last-child {
+            border-bottom: none;
+        }
+
+        .toc-num {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .toc-label {
+            margin-left: 24px;
+            font-size: 22px;
+            color: #111827;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .toc-label-en {
+            margin-left: 16px;
+            font-size: 13px;
+            color: #9ca3af;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        
+
+        <div class="left-panel">
+            <div class="left-title-zh">目录</div>
+            <div class="left-title-en">CONTENTS</div>
+            <div class="left-deco"></div>
+        </div>
+
+        <div class="right-panel">
+            <div class="toc-row">
+                <div class="toc-num">1</div>
+                <div class="toc-label">绪论</div>
+                <div class="toc-label-en">Introduction</div>
+            </div>
+
+            <div class="toc-row">
+                <div class="toc-num">2</div>
+                <div class="toc-label">相关技术与理论基础</div>
+                <div class="toc-label-en">Related Technologies</div>
+            </div>
+
+            <div class="toc-row">
+                <div class="toc-num">3</div>
+                <div class="toc-label">系统需求分析</div>
+                <div class="toc-label-en">Requirements Analysis</div>
+            </div>
+
+            <div class="toc-row">
+                <div class="toc-num">4</div>
+                <div class="toc-label">系统设计</div>
+                <div class="toc-label-en">System Design</div>
+            </div>
+
+            <div class="toc-row">
+                <div class="toc-num">5</div>
+                <div class="toc-label">系统实现</div>
+                <div class="toc-label-en">Implementation</div>
+            </div>
+
+            <div class="toc-row">
+                <div class="toc-num">6</div>
+                <div class="toc-label">总结与展望</div>
+                <div class="toc-label-en">Conclusion</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

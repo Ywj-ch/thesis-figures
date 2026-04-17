@@ -1,0 +1,157 @@
+<!--
+  PPT章节过渡页模板
+  居中布局 + 几何装饰 + 大号背景数字
+  使用方式：URL参数 ?n=1&t=绪论&e=Introduction
+  浏览器打开后截图，插入到PPT中
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>章节过渡页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 大号背景数字 */
+        .big-num {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -55%);
+            font-size: 340px;
+            font-weight: 800;
+            color: rgba(59, 130, 246, 0.08);
+            line-height: 1;
+            letter-spacing: -10px;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+
+        /* 右下角大圆装饰 */
+        .deco-circle1 {
+            position: absolute;
+            right: -120px;
+            bottom: -120px;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(96, 165, 250, 0.04));
+            z-index: 0;
+        }
+
+        /* 右上角小圆装饰 */
+        .deco-circle2 {
+            position: absolute;
+            right: 180px;
+            top: -60px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 2px solid rgba(59, 130, 246, 0.1);
+            z-index: 0;
+        }
+
+        
+
+        /* 居中内容 */
+        .content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .chapter-label {
+            display: inline-block;
+            font-size: 22px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            padding: 6px 28px;
+            border-radius: 20px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .chapter-title {
+            font-size: 54px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 6px;
+            line-height: 1.4;
+        }
+
+        .chapter-en {
+            font-size: 18px;
+            color: #9ca3af;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+            margin: 28px auto 0 auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- 背景大数字 -->
+        <div class="big-num" id="bigNum"></div>
+
+        <!-- 几何装饰 -->
+        <div class="deco-circle1"></div>
+        <div class="deco-circle2"></div>
+        
+
+        <!-- 居中内容 -->
+        <div class="content">
+            <div class="chapter-label" id="chapterLabel"></div>
+            <div class="chapter-title" id="chapterTitle"></div>
+            <div class="chapter-en" id="chapterEn"></div>
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const n = params.get('n') || '1';
+        const t = params.get('t') || '绪论';
+        const e = params.get('e') || 'Introduction';
+
+        document.getElementById('bigNum').textContent = n.padStart(2, '0');
+        document.getElementById('chapterLabel').textContent = '第' + n + '章';
+        document.getElementById('chapterTitle').textContent = t;
+        document.getElementById('chapterEn').textContent = e;
+        document.title = '第' + n + '章 ' + t;
+    </script>
+</body>
+</html>

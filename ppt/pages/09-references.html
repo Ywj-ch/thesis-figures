@@ -1,0 +1,63 @@
+<!--
+  PPT参考文献页 - 单页15条
+  使用方式：浏览器打开后截图，插入到PPT中
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考文献</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 1280px; height: 720px; overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+        .slide {
+            width: 1280px; height: 720px; position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .header { text-align: center; padding-top: 36px; padding-bottom: 12px; }
+        .header-zh { font-size: 32px; font-weight: 700; color: #1e40af; letter-spacing: 8px; }
+        .header-en { font-size: 12px; color: #9ca3af; letter-spacing: 6px; margin-top: 5px; font-weight: 300; }
+        .header-line { width: 50px; height: 3px; background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa); margin: 10px auto 0 auto; border-radius: 2px; }
+        .refs-container { flex: 1; display: flex; gap: 40px; padding: 12px 70px 28px 70px; }
+        .refs-col { flex: 1; display: flex; flex-direction: column; }
+        .ref-item { display: flex; align-items: baseline; padding: 3px 0; }
+        .ref-num { font-size: 14.5px; color: #3b82f6; font-weight: 600; flex-shrink: 0; width: 34px; text-align: left; }
+        .ref-text { font-size: 14.5px; color: #374151; line-height: 1.65; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="header-zh">参考文献</div>
+            <div class="header-en">REFERENCES</div>
+            <div class="header-line"></div>
+        </div>
+        <div class="refs-container">
+            <div class="refs-col">
+                <div class="ref-item"><span class="ref-num">[1]</span><span class="ref-text">KOCIEMBA H. Two-phase algorithm for the solution of the Rubik's cube [EB/OL]. http://kociemba.org/cube.htm.</span></div>
+                <div class="ref-item"><span class="ref-num">[2]</span><span class="ref-text">KOCIEMBA H. Rubik's Cube Two-Phase Solver [EB/OL]. https://github.com/hkociemba/RubiksCube-TwophaseSolver.</span></div>
+                <div class="ref-item"><span class="ref-num">[3]</span><span class="ref-text">KORF R E. Finding optimal solutions to Rubik's cube using pattern databases [C]// Proceedings of the Fourteenth National Conference on Artificial Intelligence (AAAI-97). Menlo Park, CA: AAAI Press, 1997: 700–705.</span></div>
+                <div class="ref-item"><span class="ref-num">[4]</span><span class="ref-text">ROKICKI T, KOCIEMBA H, DAVIDSON M, et al. The diameter of the Rubik's cube graph is twenty [J]. SIAM Journal on Discrete Mathematics, 2014, 28(2): 1082–1097.</span></div>
+                <div class="ref-item"><span class="ref-num">[5]</span><span class="ref-text">KALEEM A, KALEEM A. On Algorithms for Solving the Rubik's Cube [J]. arXiv preprint arXiv:2007.10829, 2020.</span></div>
+                <div class="ref-item"><span class="ref-num">[6]</span><span class="ref-text">LIN Y, LIANG S. Solving Rubik's Cube without tricky sampling [J]. arXiv preprint arXiv:2311.08240, 2023.</span></div>
+                <div class="ref-item"><span class="ref-num">[7]</span><span class="ref-text">HACK J, SHUTZBERG K. Rubik's Cube Localization, Face Detection, and Interactive Solving [R]. Stanford University, 2015.</span></div>
+                <div class="ref-item"><span class="ref-num">[8]</span><span class="ref-text">OpenCV Contributors. OpenCV Documentation [EB/OL].</span></div>
+            </div>
+            <div class="refs-col">
+                <div class="ref-item"><span class="ref-num">[9]</span><span class="ref-text">Three.js Team. Three.js Documentation [EB/OL].</span></div>
+                <div class="ref-item"><span class="ref-num">[10]</span><span class="ref-text">RAMOS T. FastAPI Documentation [EB/OL]. https://fastapi.tiangolo.com/.</span></div>
+                <div class="ref-item"><span class="ref-num">[11]</span><span class="ref-text">Vue.js Core Team. Vue.js Guide [EB/OL]. https://vuejs.org/guide/.</span></div>
+                <div class="ref-item"><span class="ref-num">[12]</span><span class="ref-text">Nginx Documentation [EB/OL]. https://nginx.org/en/docs/.</span></div>
+                <div class="ref-item"><span class="ref-num">[13]</span><span class="ref-text">Uvicorn Documentation [EB/OL]. https://www.uvicorn.org/.</span></div>
+                <div class="ref-item"><span class="ref-num">[14]</span><span class="ref-text">CHEN J. Group Theory and the Rubik's Cube [R]. Harvard University, 2010.</span></div>
+                <div class="ref-item"><span class="ref-num">[15]</span><span class="ref-text">REDMON J, DIVVALA S, GIRSHICK R, et al. You Only Look Once: Unified, Real-Time Object Detection[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). 2016: 779-788.</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
