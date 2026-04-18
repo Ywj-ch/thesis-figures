@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究背景与意义</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            padding: 28px 60px 0 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .title-bar .icon {
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 3px;
+        }
+
+        .title-bar h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 24px 60px 36px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            flex-shrink: 0;
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: #374151;
+            line-height: 1.85;
+            flex: 1;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="title-bar">
+            <div class="icon"></div>
+            <h1>研究背景与意义</h1>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <div class="card-title">
+                    <div class="dot"></div>
+                    魔方与计算挑战
+                </div>
+                <div class="card-text">
+                    魔方诞生于1974年，由匈牙利建筑学教授<span class="highlight">鲁比克·艾尔诺</span>发明，是史上最受欢迎的智力游戏之一。三阶魔方的状态空间高达<span class="highlight">4.3×10<sup>19</sup></span>，即使每秒尝试10亿种状态，也需要上千年才能遍历所有可能性，这使其成为算法领域的经典挑战。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <div class="dot"></div>
+                    技术发展趋势
+                </div>
+                <div class="card-text">
+                    进入21世纪，<span class="highlight">深度学习技术</span>取得重大突破——YOLO系列算法让实时目标检测成为可能，<span class="highlight">WebGL标准</span>的普及使浏览器端渲染高质量三维图形不再困难。本课题尝试将YOLO目标检测与Web3D渲染相结合，构建智能魔方还原系统。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <div class="dot"></div>
+                    研究目标
+                </div>
+                <div class="card-text">
+                    构建一套能够<span class="highlight">自动识别魔方状态</span>、<span class="highlight">计算最优还原步骤</span>、并用<span class="highlight">三维动画</span>演示还原过程的智能系统。系统将深度学习识别与Web端三维可视化相结合，实现从"看懂魔方"到"还原魔方"再到"演示还原"的完整链路。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <div class="dot"></div>
+                    实用价值
+                </div>
+                <div class="card-text">
+                    本系统可作为<span class="highlight">魔方教学工具</span>，帮助初学者直观理解还原过程、轻松学习魔方；同时，本课题探索了深度学习在规则物体检测领域的应用潜力，验证了YOLO模型在小尺寸色块识别场景下的可行性与效果。
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+</body>
+</html>
