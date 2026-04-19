@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>识别与求解数据流</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            padding: 28px 60px 0 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .title-bar .icon {
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 3px;
+        }
+
+        .title-bar h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 12px 60px 36px 60px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .col-text {
+            flex: 38;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 50px;
+            padding-left: 20px;
+        }
+
+        .col-img {
+            flex: 62;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 0px;
+        }
+
+        .col-img img {
+            max-width: 100%;
+            max-height: 630px;
+            object-fit: contain;
+        }
+
+        .stage-card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stage-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .stage-num.s1 {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+
+        .stage-num.s2 {
+            background: linear-gradient(135deg, #0369a1, #0ea5e9);
+        }
+
+        .stage-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .stage-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stage-steps li {
+            font-size: 14.5px;
+            color: #374151;
+            line-height: 1.6;
+            padding-left: 16px;
+            position: relative;
+            text-align: justify;
+        }
+
+        .stage-steps li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #94a3b8;
+        }
+
+        .stage-steps li b {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="title-bar">
+            <div class="icon"></div>
+            <h1>识别与求解数据流</h1>
+        </div>
+
+        <div class="content">
+            <div class="col-text">
+                <div class="stage-card">
+                    <div class="stage-header">
+                        <div class="stage-num s1">1</div>
+                        <div class="stage-title">视觉识别</div>
+                    </div>
+                    <ul class="stage-steps">
+                        <li><b>用户拍摄</b>魔方六面照片，逐面上传至后端</li>
+                        <li>后端调用<b>YOLOv8模型</b>推理，识别每面9个色块颜色</li>
+                        <li>将识别结果整理为<b>6×9颜色矩阵</b>，自动推断缺失颜色</li>
+                        <li>输出统一编码的状态字符串，供求解模块使用</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-header">
+                        <div class="stage-num s2">2</div>
+                        <div class="stage-title">算法求解</div>
+                    </div>
+                    <ul class="stage-steps">
+                        <li>将颜色矩阵转换为<b>Kociemba编码</b>格式</li>
+                        <li>调用<b>Kociemba两阶段算法</b>求解，≤5秒返回解法</li>
+                        <li>输出<b>最优转动序列</b>（20步以内），附带中文说明</li>
+                        <li>将序列传入<b>Three.js动画引擎</b>，逐步演示还原过程</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-img">
+                <img src="file:///C:/Users/24400/Desktop/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E5%9B%BE%E7%89%87/%E8%AF%86%E5%88%AB%E4%B8%8E%E6%B1%82%E8%A7%A3%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE.png" alt="识别与求解数据流图">
+            </div>
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+</body>
+</html>

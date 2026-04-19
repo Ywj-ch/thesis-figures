@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D可视化与学习教程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            padding: 28px 60px 0 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .title-bar .icon {
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 3px;
+        }
+
+        .title-bar h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 24px 60px 36px 60px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .card {
+            flex: 1;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 22px 26px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .card-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .card-header p {
+            font-size: 13.5px;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 15px;
+            color: #374151;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .feature-list li b {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .feature-list .bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3b82f6;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="title-bar">
+            <div class="icon"></div>
+            <h1>3D可视化与学习教程</h1>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>3D可视化</h2>
+                    <p>基于Three.js的交互式三维渲染</p>
+                </div>
+                <ul class="feature-list">
+                    <li>
+                        <div class="bullet"></div>
+                        <span>基于<b>Three.js</b>构建三维魔方模型，27个Cubie独立建模，支持<b>实时渲染</b>与交互操作</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>支持<b>鼠标拖拽旋转</b>与<b>滚轮缩放</b>，用户可从任意角度观察魔方状态</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>提供<b>自动播放</b>和<b>单步执行</b>两种动画模式，逐步演示还原过程</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>动画速度支持<b>0.5x / 1x / 2x</b>三档调节，适应不同学习节奏</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>旋转动画采用<b>旋转组机制</b>，配合浮点归一化处理，确保长时间操作不散架</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>学习教程</h2>
+                    <p>从入门到进阶的系统化教学</p>
+                </div>
+                <ul class="feature-list">
+                    <li>
+                        <div class="bullet"></div>
+                        <span>提供<b>七步法</b>入门教学，适合零基础用户快速上手魔方还原</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>内置<b>CFOP法</b>进阶教学，涵盖Cross、F2L、OLL、PLL四个阶段</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>内置<b>OLL公式库</b>（57种情况）与<b>PLL公式库</b>（21种情况），辅助高级学习</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>每个教程步骤配有<b>三维动画演示</b>，直观展示操作手法与色块变化</span>
+                    </li>
+                    <li>
+                        <div class="bullet"></div>
+                        <span>支持<b>分步回放</b>与<b>重复观看</b>，帮助用户反复练习巩固技巧</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+</body>
+</html>

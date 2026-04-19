@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>总结与展望</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            padding: 28px 60px 0 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .title-bar .icon {
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 3px;
+        }
+
+        .title-bar h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 24px 60px 36px 60px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .col-left {
+            flex: 55;
+        }
+
+        .col-right {
+            flex: 45;
+        }
+
+        .card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 18px;
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            flex-shrink: 0;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .item-list li {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.6;
+            text-align: justify;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .item-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #94a3b8;
+        }
+
+        .item-list li b {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="title-bar">
+            <div class="icon"></div>
+            <h1>总结与展望</h1>
+        </div>
+
+        <div class="content">
+            <div class="col col-left">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        核心工作
+                    </div>
+                    <ul class="item-list">
+                        <li><b>全流程开发</b>：从需求分析、系统设计、功能实现到测试验证，完成了系统的完整研发</li>
+                        <li>利用<b>YOLOv8</b>实现魔方状态自动识别，设计了<b>智能网格填充算法</b>处理拍摄偏差</li>
+                        <li><b>集成Kociemba算法</b>，实现毫秒级求解响应，解长度控制在20步以内</li>
+                        <li>基于<b>Three.js</b>构建流畅的三维动画演示系统，支持多种交互方式</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        技术栈与架构
+                    </div>
+                    <ul class="item-list">
+                        <li>前端：<b>Vue 3 + Three.js + Element Plus</b>，组件化开发，支持深浅主题</li>
+                        <li>后端：<b>FastAPI + YOLOv8</b>，提供RESTful API，支持高并发请求</li>
+                        <li>采用<b>模块化分层架构</b>，各模块职责清晰，便于维护与扩展</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        开发经验
+                    </div>
+                    <ul class="item-list">
+                        <li>模型部署中的<b>兼容性处理</b>与跨平台适配</li>
+                        <li><b>WebGL渲染性能优化</b>，确保60fps流畅动画</li>
+                        <li>用户界面设计与<b>交互体验</b>的持续改进</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col col-right">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        技术优化
+                    </div>
+                    <ul class="item-list">
+                        <li>将YOLOv8通过<b>TensorFlow.js / ONNX Runtime</b>部署到浏览器端</li>
+                        <li>实现<b>纯前端识别</b>，减少服务器依赖，支持弱网与移动端场景</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        交互升级
+                    </div>
+                    <ul class="item-list">
+                        <li>引入<b>语音控制</b>与<b>手势识别</b>，用户动动嘴或挥挥手即可操控魔方</li>
+                        <li>进一步提升使用的<b>便捷性</b>与<b>沉浸感</b></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        内容扩展
+                    </div>
+                    <ul class="item-list">
+                        <li>增加<b>四阶、五阶</b>及异形魔方的教学内容</li>
+                        <li>根据学习进度推荐<b>个性化练习方案</b></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        创新方向
+                    </div>
+                    <ul class="item-list">
+                        <li>结合<b>增强现实（AR）技术</b>，摄像头识别真实魔方状态</li>
+                        <li>在屏幕画面上叠加<b>虚拟指引箭头</b>与手势提示，虚实结合提升学习体验</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+</body>
+</html>

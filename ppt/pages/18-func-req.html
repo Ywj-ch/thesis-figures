@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统功能需求</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            padding: 28px 60px 0 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .title-bar .icon {
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 3px;
+        }
+
+        .title-bar h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px 60px 36px 60px;
+            display: flex;
+            gap: 28px;
+        }
+
+        .col-img {
+            flex: 50;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .col-img img {
+            max-width: 100%;
+            max-height: 580px;
+            object-fit: contain;
+        }
+
+        .col-text {
+            flex: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: flex-start;
+            padding-top: 30px;
+        }
+
+        .card {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 18px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            flex-shrink: 0;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.65;
+            text-align: justify;
+        }
+
+        .card-text b {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="title-bar">
+            <div class="icon"></div>
+            <h1>系统功能需求</h1>
+        </div>
+
+        <div class="content">
+            <div class="col-img">
+                <img src="file:///C:/Users/24400/Desktop/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E5%9B%BE%E7%89%87/%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A1%86%E6%9E%B6%E5%9B%BE.png" alt="系统功能框架图">
+            </div>
+
+            <div class="col-text">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        状态识别
+                    </div>
+                    <div class="card-text">
+                        用户拍摄魔方六面照片，系统通过<b>YOLOv8目标检测模型</b>识别每个色块颜色，输出3×3颜色网格。支持逐面拍摄与自动推断缺失颜色，识别准确率需达<b>90%以上</b>。
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        还原算法
+                    </div>
+                    <div class="card-text">
+                        核心求解模块采用<b>Kociemba两阶段算法</b>，在<b>1秒内</b>计算最优转动序列，解长度控制在<b>20步以内</b>，求解结果可直接驱动三维动画演示还原过程。
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        3D可视化
+                    </div>
+                    <div class="card-text">
+                        基于Three.js渲染<b>三维魔方模型</b>，支持鼠标拖拽旋转与滚轮缩放交互。提供<b>自动播放</b>和<b>单步执行</b>两种动画模式，速度支持0.5x/1x/2x调节。
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <div class="dot"></div>
+                        学习教程
+                    </div>
+                    <div class="card-text">
+                        提供<b>七步法</b>和<b>CFOP法</b>教学，配有三维动画演示每一步骤的操作方式，内置OLL/PLL公式库辅助进阶学习，帮助用户快速掌握还原技巧。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能模块设计</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            padding: 28px 60px 0 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .title-bar .icon {
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 3px;
+        }
+
+        .title-bar h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 24px 60px 36px 60px;
+            display: flex;
+            gap: 22px;
+        }
+
+        .col {
+            flex: 1;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-header {
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .col-header h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 4px;
+        }
+
+        .col-header p {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .module-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .module-list .module-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .module-list .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3b82f6;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .module-list .module-info {
+            flex: 1;
+        }
+
+        .module-list .module-name {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.4;
+        }
+
+        .module-list .module-desc {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin-top: 2px;
+            text-align: justify;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="title-bar">
+            <div class="icon"></div>
+            <h1>功能模块设计</h1>
+        </div>
+
+        <div class="content">
+            <div class="col">
+                <div class="col-header">
+                    <h2>用户界面层</h2>
+                    <p>Vue3 + Element Plus + Three.js</p>
+                </div>
+                <ul class="module-list">
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">Views（页面视图）</div>
+                            <div class="module-desc">HomeView首页、SolverView求解器、LearningView学习教程</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">Components（公共组件）</div>
+                            <div class="module-desc">Cube3DView三维魔方、Face2DView二维展开、StepList步骤列表</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">Composables（组合式函数）</div>
+                            <div class="module-desc">useTheme主题切换、useCubeCustomization魔方自定义配置</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">Router（路由管理）</div>
+                            <div class="module-desc">Vue Router管理页面导航与懒加载</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <div class="col-header">
+                    <h2>业务逻辑层</h2>
+                    <p>Python + FastAPI + Uvicorn</p>
+                </div>
+                <ul class="module-list">
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">app.py（路由入口）</div>
+                            <div class="module-desc">FastAPI应用实例、CORS中间件、API路由注册</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">cube_service.py（业务聚合）</div>
+                            <div class="module-desc">串联识别与求解流程，协调各模块调用顺序</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">cube_image_detection.py</div>
+                            <div class="module-desc">调用YOLOv8模型推理，识别每面9个色块颜色</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">convert_cube_state.py</div>
+                            <div class="module-desc">颜色矩阵→Kociemba编码转换，校验魔方状态合法性</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <div class="col-header">
+                    <h2>数据访问层</h2>
+                    <p>文件系统存储</p>
+                </div>
+                <ul class="module-list">
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">models/（模型文件）</div>
+                            <div class="module-desc">存储YOLOv8训练权重（best.pt），供推理加载</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">images/（临时图片）</div>
+                            <div class="module-desc">存储用户上传的魔方六面照片，处理后自动清理</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">cube_results/（识别结果）</div>
+                            <div class="module-desc">存储识别的颜色矩阵与求解结果JSON</div>
+                        </div>
+                    </li>
+                    <li class="module-item">
+                        <div class="dot"></div>
+                        <div class="module-info">
+                            <div class="module-name">twophase/（预计算表）</div>
+                            <div class="module-desc">Kociemba算法剪枝表，加载后供快速求解使用</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+</body>
+</html>
